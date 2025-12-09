@@ -6,14 +6,6 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json()); // Parse JSON request bodies
 
-db.connect(err => {
-    if (err) {
-        console.error('Database connection failed: ' + err.stack);
-        return;
-    }
-    console.log('Connected to Aiven MySQL database as id ' + connection.threadId);
-});
-
 // Example Route: Get all cards
 app.get('/allcards', async (req, res) => {
     try {
@@ -21,7 +13,7 @@ app.get('/allcards', async (req, res) => {
         res.json(rows);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Server error - allcards10' });
+        res.status(500).json({ message: 'Server error - allcards11' });
     }
 });
 

@@ -13,4 +13,12 @@ const connection  = mysql.createConnection({
     queueLimit: 0
 });
 
+connection.connect(err => {
+    if (err) {
+        console.error('Database connection failed: ' + err.stack);
+        return;
+    }
+    console.log('Connected to Aiven MySQL database as id ' + connection.threadId);
+});
+
 module.exports = connection;
