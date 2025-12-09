@@ -15,7 +15,7 @@ const pool = mysql.createConnection({
 
 async function testConnection() {
     try {
-        const connection = await pool.getConnection()
+        const connection = await pool.createConnection();
         console.log('Successfully connected to Aiven MySQL database with SSL!');
         connection.release();
     } catch (err) {
