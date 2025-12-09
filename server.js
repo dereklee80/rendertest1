@@ -9,7 +9,7 @@
     // Example Route: Get all cards
     app.get('/allcards', async (req, res) => {
         try {
-            const [rows] = await db.query('SELECT * FROM card_test');
+            const [rows] = await db.query('SELECT * FROM defaultdb.card_test');
             res.json(rows);
         } catch (err) {
             console.error(err);
