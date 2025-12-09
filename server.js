@@ -2,7 +2,7 @@
     const express = require('express');
     const db = require('./db.js'); // Your database connection
     const app = express();
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT || 14495;
 
     app.use(express.json()); // Parse JSON request bodies
 
