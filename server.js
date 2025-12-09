@@ -14,7 +14,7 @@ app.get('/allcards', async (req, res) => {
         res.json(rows);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Server error - allcards16' });
+        res.status(500).json({ message: 'Server error - allcards17' });
     }
 });
 
