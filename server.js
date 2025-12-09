@@ -2,7 +2,7 @@
     const express = require('express');
     const db = require('./db.js'); // Your database connection
     const app = express();
-    const PORT = process.env.PORT || 14495;
+    const PORT = process.env.PORT;
 
     app.use(express.json()); // Parse JSON request bodies
 
@@ -13,7 +13,7 @@
             res.json(rows);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ message: 'Server error' });
+            res.status(500).json({ message: 'Server error - allcards' });
         }
     });
 
@@ -25,7 +25,7 @@
             res.status(201).json({ message: 'Card added successfully' });
         } catch (err) {
             console.error(err);
-            res.status(500).json({ message: 'Server error' });
+            res.status(500).json({ message: 'Server error - addcard' });
         }
     });
 
