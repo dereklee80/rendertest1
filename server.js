@@ -1,6 +1,6 @@
 // server.js
 const express = require('express');
-const connectToDB = require('./db'); // Your database connection
+const connectToDB = require('./db.js'); // Your database connection
 const app = express();
 //const PORT = process.env.PORT || 3000;
 
@@ -14,7 +14,7 @@ app.get('/allcards', async (req, res) => {
         res.json(rows);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Server error - allcards18' });
+        res.status(500).json({ message: 'Server error - allcards19' });
     }
 });
 
