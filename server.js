@@ -1,6 +1,6 @@
 // server.js
 const express = require('express');
-const db = require('./db.js'); // Your database connection
+const connectToDB = require('./db'); // Your database connection
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -9,14 +9,16 @@ app.use(express.json()); // Parse JSON request bodies
 // Example Route: Get all cards
 app.get('/allcards', async (req, res) => {
     try {
-        const [rows] = await db.query('SELECT * FROM defaultdb.card_test');
+        let dbConnection = await connectToDB();
+        const [rows] = await dbConnection.query('SELECT * FROM defaultdb.card_test');
         res.json(rows);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Server error - allcards15' });
+        res.status(500).json({ message: 'Server error - allcards16' });
     }
 });
 
+/*
 // Example Route: Create a new card
 app.post('/addcard', async (req, res) => {
     const { card_name, card_qty } = req.body;
@@ -32,3 +34,4 @@ app.post('/addcard', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+*/
