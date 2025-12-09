@@ -25,4 +25,4 @@ async function testConnection() {
 
 testConnection();
 
-module.exports = connection;
+module.exports = pool;
