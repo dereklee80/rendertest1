@@ -2,7 +2,7 @@
 const mysql = require('mysql2/promise');
 require('dotenv').config();
 
-const connection  = mysql.createConnection({
+const pool = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -13,12 +13,16 @@ const connection  = mysql.createConnection({
     queueLimit: 0
 });
 
-connection.connect(err => {
-    if (err) {
-        console.error('Database connection failed: ' + err.stack);
-        return;
+async function testConnection() {
+    try {
+        const connection = await pool.getConnection()
+        console.log('Successfully connected to Aiven MySQL database with SSL!');
+        connection.release();
+    } catch (err) {
+        console.error('Database connection failed:', err);
     }
-    console.log('Connected to Aiven MySQL database as id ' + connection.threadId);
-});
+}
+
+testConnection();
 
 module.exports = connection;
