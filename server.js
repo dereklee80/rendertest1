@@ -21,14 +21,14 @@ const app = express();
 app.use(express.json()); // Parse JSON request bodies
 
 // Example Route: Get all cards
-app.get('/allcards22', async (req, res) => {
+app.get('/allcards23', async (req, res) => {
     try {
         let connection = await mysql.createConnection(dbConfig);
-        const [rows] = await connection.execute('SELECT  FROM defaultdb.card_test');
+        const [rows] = await connection.execute('SELECT * FROM defaultdb.card_test');
         res.json(rows);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Server error - allcards22' });
+        res.status(500).json({ message: 'Server error - allcards23' });
     }
 });
 
