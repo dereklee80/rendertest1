@@ -1,7 +1,7 @@
 // server.js
 const express = require('express');
 const mysql = require('mysql2/promise');
-const fs = require('fs');
+//const fs = require('fs');
 const port = 3000;
 
 
@@ -14,10 +14,7 @@ const dbConfig = {
     waitForConnections: true,
     connectionLimit: 100,
     queueLimit: 0,
-    ssl: {
-        rejectUnauthorized: true,
-        ca: fs.readFileSync('./ca.pem').toString(), // Path to your downloaded CA certificate
-    }
+
 };
 
 const app = express();
@@ -31,7 +28,7 @@ app.get('/allcards', async (req, res) => {
         res.json(rows);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Server error - allcards20' });
+        res.status(500).json({ message: 'Server error - allcards21' });
     }
 });
 
@@ -49,6 +46,7 @@ app.post('/addcard', async (req, res) => {
 });
 */
 
+//start the server
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
