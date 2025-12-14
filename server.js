@@ -28,28 +28,28 @@ const app = express();
 app.use(express.json()); // Parse JSON request bodies
 
 // Example Route: Get all cards
-app.get('/allcards27', async (req, res) => {
+app.get('/allcards28', async (req, res) => {
     try {
         let connection = await mysql.createConnection(dbConfig);
         const [rows] = await connection.execute('SELECT * FROM defaultdb.card_test');
         res.json(rows);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Server error - allcards27' });
+        res.status(500).json({ message: 'Server error - allcards28' });
     }
 });
 
 
 // Example Route: Create a new card
 app.get('/addcard', async (req, res) => {
-    const { card_name, card_qty } = req.body;
+    const { card_name, card_qty } = req.query;
     try {
         let connection = await mysql.createConnection(dbConfig);
         await connection.execute('INSERT INTO card_test (card_name, card_qty) VALUES (?, ?)', [card_name, card_qty]);
-        res.status(201).json({ message: 'Card added successfully' });
+        res.status(201).json({ message: 'Card added successfully28' });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Server error - addcard' });
+        res.status(500).json({ message: 'Server error - addcard28' });
     }
 });
 
